@@ -60,13 +60,13 @@ class HeroPower(db.Model, SerializerMixin):
     updated_at =db.Column(db.DateTime, onupdate=db.func.now())
     
   
-    # @validates("strength")
-    # def validate_strength(self,key, strength):
-    #     strengths = ["Strong", "Weak", "Average"]
+    @validates("strength")
+    def validate_strength(self,key, strength):
+        strengths = ["Strong", "Weak", "Average"]
         
-    #     if strength not in strengths:
-    #         raise ValueError("Provide valid strength")
-    #     return strength
+        if strength not in strengths:
+            raise ValueError("Provide valid strength")
+        return strength
                 
                 
                 
