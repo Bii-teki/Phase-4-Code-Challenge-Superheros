@@ -76,38 +76,38 @@ api.add_resource(HeroByIDResource, "/heroes/<int:id>")
 
 
 
-# class PowersResource(Resource):
-#     def get(self):    
-#         return make_response(jsonify([power.to_dict() for power in Power.query.all()]), 200)    
+class PowersResource(Resource):
+    def get(self):    
+        return make_response(jsonify([power.to_dict() for power in Power.query.all()]), 200)    
 
-# api.add_resource(PowersResource, "/powers")
+api.add_resource(PowersResource, "/powers")
 
 
-# class PowerByIDResource(Resource):
-#     def get(self, id):
-#         return make_response(jsonify(Power.query.filter_by(id=id).first().to_dict()), 200)  
+class PowerByIDResource(Resource):
+    def get(self, id):
+        return make_response(jsonify(Power.query.filter_by(id=id).first().to_dict()), 200)  
     
     
-#     @api.doc(description='Update a power by ID')
-#     @api.expect(patch_model)
-#     @api.response(200, 'Power updated successfully')
-#     @api.response(404, 'Power not found')
-#     def patch(self, id):
-#         data = request.json
-#         record = Power.query.filter_by(id=id).first()
+    # @api.doc(description='Update a power by ID')
+    # @api.expect(patch_model)
+    # @api.response(200, 'Power updated successfully')
+    # @api.response(404, 'Power not found')
+    def patch(self, id):
+        data = request.json
+        record = Power.query.filter_by(id=id).first()
 
-#         if record:
-#             if 'name' in data:
-#                 record.name = data['name']
-#             if 'description' in data:
-#                 record.description = data['description']
+        if record:
+            if 'name' in data:
+                record.name = data['name']
+            if 'description' in data:
+                record.description = data['description']
 
-#             db.session.commit()
-#             return make_response(jsonify(record.to_dict()), 200)
-#         else:
-#             return make_response(jsonify({"message": "Power not found"}), 404)
+            db.session.commit()
+            return make_response(jsonify(record.to_dict()), 200)
+        else:
+            return make_response(jsonify({"message": "Power not found"}), 404)
 
-# api.add_resource(PowerByIDResource, "/powers/<int:id>")
+api.add_resource(PowerByIDResource, "/powers/<int:id>")
 
 
 
