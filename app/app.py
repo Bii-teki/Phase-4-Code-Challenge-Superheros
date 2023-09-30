@@ -1,26 +1,26 @@
-# #!/usr/bin/env python3
+#!/usr/bin/env python3
 
-# from flask import Flask, make_response, jsonify, request
-# from flask_migrate import Migrate
-# from flask_restful import Api, Resource
-# # from flask_restx import Api, Resource, reqparse, fields
-# from flask_cors import CORS
-# import random
+from flask import Flask, make_response, jsonify, request
+from flask_migrate import Migrate
+from flask_restful import Api, Resource
+# from flask_restx import Api, Resource, reqparse, fields
+from flask_cors import CORS
+import random
 
 
-# from models import db, Hero, HeroPower, Power
+from models import db, Hero, HeroPower, Power
 
-# app = Flask(__name__)
-# CORS(app)
+app = Flask(__name__)
+CORS(app)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///heropower.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///heropower.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# migrate = Migrate(app, db)
+migrate = Migrate(app, db)
 
-# db.init_app(app)
+db.init_app(app)
 
-# api = Api(app)
+api = Api(app)
 
 # patch_model = api.model('PowerPatch', {
 #     'name': fields.String(description='Name of the power'),
@@ -30,15 +30,15 @@
 #     'strength': fields.String(strength='Strength')
 # })
 
-# class Index(Resource):
+class Index(Resource):
     
-#     def get(self):
-#         response_dict = {
-#             "index": "Welcome to the Heros RESTful API",
-#         }
-#         return jsonify(response_dict)    
+    def get(self):
+        response_dict = {
+            "index": "Welcome to the Heros RESTful API",
+        }
+        return jsonify(response_dict)    
 
-# api.add_resource(Index, '/')
+api.add_resource(Index, '/')
 
 
 
