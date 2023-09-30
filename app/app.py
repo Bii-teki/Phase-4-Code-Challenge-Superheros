@@ -42,37 +42,37 @@ api.add_resource(Index, '/')
 
 
 
-# class HerosResource(Resource):
-#     def get(self):    
-#         return make_response(jsonify([hero.to_dict() for hero in Hero.query.all()]), 200)    
+class HerosResource(Resource):
+    def get(self):    
+        return make_response(jsonify([hero.to_dict() for hero in Hero.query.all()]), 200)    
 
-# api.add_resource(HerosResource, "/heroes")
+api.add_resource(HerosResource, "/heroes")
 
 
-# class HeroByIDResource(Resource):
-#     def get(self, id):
-#         heros = Hero.query.filter_by(id=id).filter()
+class HeroByIDResource(Resource):
+    def get(self, id):
+        heros = Hero.query.filter_by(id=id).filter()
 
-#         hero_list = []
+        hero_list = []
 
-#         for hero in heros:
-#             powers = Power.query.join(HeroPower).filter(HeroPower.hero_id == hero.id).all()
-#             powers_dict = [power.to_dict() for power in powers]
+        for hero in heros:
+            powers = Power.query.join(HeroPower).filter(HeroPower.hero_id == hero.id).all()
+            powers_dict = [power.to_dict() for power in powers]
 
-#             hero_dict = {
-#                 "id": hero.id,
-#                 "name": hero.name,
-#                 "super_name": hero.super_name,
-#                 "powers": powers_dict
-#             }
-#             hero_list.append(hero_dict)
+            hero_dict = {
+                "id": hero.id,
+                "name": hero.name,
+                "super_name": hero.super_name,
+                "powers": powers_dict
+            }
+            hero_list.append(hero_dict)
             
-#         print('Fetched data:', hero_list)    
+        print('Fetched data:', hero_list)    
 
-#         return make_response(jsonify(hero_dict), 200)
+        return make_response(jsonify(hero_dict), 200)
     
     
-# api.add_resource(HeroByIDResource, "/heroes/<int:id>") 
+api.add_resource(HeroByIDResource, "/heroes/<int:id>") 
 
 
 
