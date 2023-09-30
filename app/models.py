@@ -70,18 +70,18 @@ class HeroPower(db.Model, SerializerMixin):
                 
                 
                 
-    # @validates('description') 
-    # def validate_description(self,key, description):
-    #     if len(description) < 20:
-    #        raise ValueError("Dascription provided is too short")
-    #     return description
+    @validates('description') 
+    def validate_description(self,key, description):
+        if len(description) < 20:
+           raise ValueError("Dascription provided is too short")
+        return description
     
-    # def to_dict(self):
-    #     return {
-    #         'id':self.id,
-    #         "strength" : self.strength
+    def to_dict(self):
+        return {
+            'id':self.id,
+            "strength" : self.strength
             
-    #     }
+        }
         
             
       
