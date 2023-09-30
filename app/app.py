@@ -111,32 +111,32 @@ api.add_resource(PowerByIDResource, "/powers/<int:id>")
 
 
 
-# class HeroPowerResource(Resource):
-#     @api.doc(description='creating new HeroPower')
-#     @api.expect(post_model)
-#     @api.response(200, 'Power updated successfully')
-#     @api.response(404, 'Power not found')
+class HeroPowerResource(Resource):
+    @api.doc(description='creating new HeroPower')
+    @api.expect(post_model)
+    @api.response(200, 'Power updated successfully')
+    @api.response(404, 'Power not found')
     
-#     def post(self):
-#         data = request.get_json()
-#         heros_id = [hero.id for hero in Hero.query.all() ]
-#         powers_id = [power.id for power in Hero.query.all() ]
+    def post(self):
+        data = request.get_json()
+        heros_id = [hero.id for hero in Hero.query.all() ]
+        powers_id = [power.id for power in Hero.query.all() ]
         
         
         
-#         new_hero = HeroPower(
-#             hero_id = random.choice(heros_id),
-#             power_id =random.choice(powers_id),
-#             strength = data["strength"]
-#         )
+        new_hero = HeroPower(
+            hero_id = random.choice(heros_id),
+            power_id =random.choice(powers_id),
+            strength = data["strength"]
+        )
         
-#         db.session.add(new_hero)
-#         db.session.commit()
+        db.session.add(new_hero)
+        db.session.commit()
         
-#         return make_response(jsonify(new_hero.to_dict()), 200)
+        return make_response(jsonify(new_hero.to_dict()), 200)
     
     
-# api.add_resource(HeroPowerResource, "/hero_powers")    
+api.add_resource(HeroPowerResource, "/hero_powers")    
 
 
  
