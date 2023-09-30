@@ -16,13 +16,13 @@ class Hero(db.Model, SerializerMixin):
     heropowers1 = db.relationship("HeroPower", backref="hero")
     
     
-    # def to_dict(self):
-    #     return {
-    #         'id':self.id,
-    #         "name" : self.name,
-    #         "super_name" : self.super_name
+    def to_dict(self):
+        return {
+            'id':self.id,
+            "name" : self.name,
+            "super_name" : self.super_name
             
-    #     }
+        }
     
 class Power(db.Model, SerializerMixin):   
     __tablename__ = "powers"
@@ -34,14 +34,20 @@ class Power(db.Model, SerializerMixin):
     updated_at =db.Column(db.DateTime, onupdate=db.func.now())
     
     heropowers1 = db.relationship("HeroPower", backref="power")
-    
-    # def to_dict(self):
-    #     return {
-    #         'id':self.id,
-    #         "name" : self.name,
-    #         "description" : self.description
+    def to_dict(self):
+        return {
+            'id':self.id,
+            "name" : self.name,
+            "super_name" : self.super_name
             
-    #     }
+        } 
+    def to_dict(self):
+        return {
+            'id':self.id,
+            "name" : self.name,
+            "description" : self.description
+            
+        }
     
 class HeroPower(db.Model, SerializerMixin):
     __tablename__ = "heropowers" 
