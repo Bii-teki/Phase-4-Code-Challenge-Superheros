@@ -8,12 +8,12 @@ class Hero(db.Model, SerializerMixin):
     __tablename__ = 'heros'
 
     id = db.Column(db.Integer, primary_key=True)
-    # name=db.Column(db.String(100), nullable=False)
-    # super_name=db.Column(db.String(100), nullable=False)
-    # created_at =db.Column(db.DateTime, server_default=db.func.now())
-    # updated_at=db.Column(db.DateTime, onupdate=db.func.now())
+    name=db.Column(db.String(100), nullable=False)
+    super_name=db.Column(db.String(100), nullable=False)
+    created_at =db.Column(db.DateTime, server_default=db.func.now())
+    updated_at=db.Column(db.DateTime, onupdate=db.func.now())
     
-    # heropowers1 = db.relationship("HeroPower", backref="hero")
+    heropowers1 = db.relationship("HeroPower", backref="hero")
     
     
     # def to_dict(self):
@@ -28,12 +28,12 @@ class Power(db.Model, SerializerMixin):
     __tablename__ = "powers"
     
     id = db.Column(db.Integer, primary_key=True)
-    # name=db.Column(db.String(100), nullable=False)
-    # description=db.Column(db.String(100), nullable=False)
-    # created_at =db.Column(db.DateTime, server_default=db.func.now())
-    # updated_at =db.Column(db.DateTime, onupdate=db.func.now())
+    name=db.Column(db.String(100), nullable=False)
+    description=db.Column(db.String(100), nullable=False)
+    created_at =db.Column(db.DateTime, server_default=db.func.now())
+    updated_at =db.Column(db.DateTime, onupdate=db.func.now())
     
-    # heropowers1 = db.relationship("HeroPower", backref="power")
+    heropowers1 = db.relationship("HeroPower", backref="power")
     
     # def to_dict(self):
     #     return {
@@ -47,11 +47,11 @@ class HeroPower(db.Model, SerializerMixin):
     __tablename__ = "heropowers" 
     
     id = db.Column(db.Integer, primary_key=True) 
-    # hero_id=db.Column(db.Integer(), db.ForeignKey("heros.id"), nullable=False )
-    # power_id=db.Column(db.Integer(), db.ForeignKey("powers.id"), nullable=False )
-    # strength = db.Column(db.String(50), nullable=False)
-    # created_at =db.Column(db.DateTime, server_default=db.func.now())
-    # updated_at =db.Column(db.DateTime, onupdate=db.func.now())
+    hero_id=db.Column(db.Integer(), db.ForeignKey("heros.id"), nullable=False )
+    power_id=db.Column(db.Integer(), db.ForeignKey("powers.id"), nullable=False )
+    strength = db.Column(db.String(50), nullable=False)
+    created_at =db.Column(db.DateTime, server_default=db.func.now())
+    updated_at =db.Column(db.DateTime, onupdate=db.func.now())
     
   
     # @validates("strength")
