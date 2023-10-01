@@ -2,15 +2,16 @@
 
 from flask import Flask, make_response, jsonify, request
 from flask_migrate import Migrate
+from flask.helpers import send_from_directory
 from flask_restful import Api, Resource
 from flask_restx import Api, Resource, reqparse, fields
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import random
 
 
 from models import db, Hero, HeroPower, Power
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="client/build", static_url_path="")
 CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///heropower.db'
@@ -31,12 +32,16 @@ post_model = api.model('PostHeroPower', {
 })
 
 class Index(Resource):
-    
+    @cross_origin()    
     def get(self):
         response_dict = {
             "index": "Welcome to the Heros RESTful API",
         }
-        return jsonify(response_dict)    
+        return jsonify(response_dict) 
+    
+    @cross_origin() 
+    def serve():
+        return send_from_directory(app.static_folder, "index.html") 
 
 api.add_resource(Index, '/')
 
