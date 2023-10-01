@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 
 from flask_restful import Api, Resource
 from flask_restx import Api, Resource, reqparse, fields
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import random
 
 
