@@ -1,0 +1,3 @@
+requirements.txt found in /home/bii/Desktop/phase4-flask/Phase-4-Code-Challenge-Superheros-1/app instead of Pipfile! Converting...
+Warning: Your Pipfile now contains pinned versions, if your requirements.txt did. 
+We recommend updating your Pipfile to specify the "*" version, instead.
