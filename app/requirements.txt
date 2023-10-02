@@ -1,3 +1,34 @@
-requirements.txt found in /home/bii/Desktop/phase4-flask/Phase-4-Code-Challenge-Superheros-1/app instead of Pipfile! Converting...
-Warning: Your Pipfile now contains pinned versions, if your requirements.txt did. 
-We recommend updating your Pipfile to specify the "*" version, instead.
+alembic
+aniso8601
+attrs
+blinker
+click
+Faker
+flask
+Flask-Cors
+Flask-Migrate
+Flask-RESTful
+flask-restx
+flask-sqlalchemy
+greenlet
+gunicorn
+importlib-metadata
+importlib-resources
+itsdangerous
+Jinja2
+jsonschema
+jsonschema-specifications
+Mako
+MarkupSafe
+packaging
+pkgutil-resolve-name
+python-dateutil
+pytz
+referencing
+rpds-py
+six
+SQLAlchemy
+SQLAlchemy-serializer
+typing-extensions
+werkzeug
+zipp
