@@ -5,10 +5,10 @@ name = "pypi"
 
 [packages]
 flask ="*"
-flask_migrate ="*"
-flask_restful ="*"
-flask_restx ="*"
-flask_cors = "*"
+flask-migrate ="*"
+flask-restful ="*"
+flask-restx ="*"
+flask-cors = "*"
 
 [dev-packages]
 
