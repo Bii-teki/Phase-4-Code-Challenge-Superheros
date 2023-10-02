@@ -4,11 +4,11 @@ attrs
 blinker
 click
 Faker
-flask
+flask==1.1.4
 Flask-Cors
 Flask-Migrate
 Flask-RESTful
-flask-restx
+flask-restx 
 flask-sqlalchemy
 greenlet
 gunicorn
