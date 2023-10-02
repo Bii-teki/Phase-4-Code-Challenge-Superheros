@@ -19,7 +19,7 @@ Jinja2
 jsonschema
 jsonschema-specifications
 Mako
-MarkupSafe
+MarkupSafe==2.0.1
 packaging
 pkgutil-resolve-name
 python-dateutil
