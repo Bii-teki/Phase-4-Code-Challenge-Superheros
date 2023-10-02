@@ -4,7 +4,7 @@ from flask import Flask, make_response, jsonify, request, send_from_directory
 from flask_migrate import Migrate
 
 from flask_restful import Api, Resource
-# from flask_restx import Api, Resource, reqparse, fields
+from flask_restx import Api, Resource, reqparse, fields
 from flask_cors import CORS, cross_origin
 
 import random
@@ -26,13 +26,13 @@ db.init_app(app)
 
 api = Api(app)
 
-# patch_model = api.model('PowerPatch', {
-#     'name': fields.String(description='Name of the power'),
-#     'description': fields.String(description='Description of the power')
-# })
-# post_model = api.model('PostHeroPower', {
-#     'strength': fields.String(strength='Strength')
-# })
+patch_model = api.model('PowerPatch', {
+    'name': fields.String(description='Name of the power'),
+    'description': fields.String(description='Description of the power')
+})
+post_model = api.model('PostHeroPower', {
+    'strength': fields.String(strength='Strength')
+})
 
 class Index(Resource):
     @cross_origin()    
@@ -94,10 +94,10 @@ class PowerByIDResource(Resource):
         return make_response(jsonify(Power.query.filter_by(id=id).first().to_dict()), 200)  
     
     
-    # @api.doc(description='Update a power by ID')
-    # @api.expect(patch_model)
-    # @api.response(200, 'Power updated successfully')
-    # @api.response(404, 'Power not found')
+    @api.doc(description='Update a power by ID')
+    @api.expect(patch_model)
+    @api.response(200, 'Power updated successfully')
+    @api.response(404, 'Power not found')
     def patch(self, id):
         data = request.json
         record = Power.query.filter_by(id=id).first()
@@ -135,12 +135,30 @@ class HeroPowerResource(Resource):
             power_id =random.choice(powers_id),
             strength = data["strength"]
         )
+        try:
+            db.session.add(new_hero)
+            db.session.commit()
         
-        db.session.add(new_hero)
-        db.session.commit()
+            id = data["hero_id"]
+            hero = Hero.query.get(int(id))
+            powers = Power.query.join(HeroPower).filter_by(hero_id = id).all()
+            powers_dict = [power.to_dict() for power in powers]
+
+            hero_dict = {
+            "id":hero.id,
+            "name":hero.name,
+            "super_name":hero.super_name,
+            "powers":powers_dict
+            }
+
+            response = make_response(jsonify(hero_dict), 200)
+            return response
+        except:
+            return {"errors": ["validation errors"]} , 404  
+
+            
+            
         
-        return make_response(jsonify(new_hero.to_dict()), 200)
-    
     
 api.add_resource(HeroPowerResource, "/hero_powers")    
 
