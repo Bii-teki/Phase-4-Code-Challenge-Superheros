@@ -16,6 +16,7 @@ flask-swagger-ui = "*"
 gunicorn = "*"
 pytest = "*"
 flask_restx="*"
+flask_cors="*"
 [dev-packages]
 
 [requires]
