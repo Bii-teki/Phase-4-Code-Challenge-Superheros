@@ -26,13 +26,13 @@ db.init_app(app)
 
 api = Api(app)
 
-patch_model = api.model('PowerPatch', {
-    'name': fields.String(description='Name of the power'),
-    'description': fields.String(description='Description of the power')
-})
-post_model = api.model('PostHeroPower', {
-    'strength': fields.String(strength='Strength')
-})
+# patch_model = api.model('PowerPatch', {
+#     'name': fields.String(description='Name of the power'),
+#     'description': fields.String(description='Description of the power')
+# })
+# post_model = api.model('PostHeroPower', {
+#     'strength': fields.String(strength='Strength')
+# })
 
 class Index(Resource):
     @cross_origin()    
