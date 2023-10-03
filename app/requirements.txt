@@ -4,7 +4,7 @@ attrs
 blinker
 click
 Faker
-flask==1.1.4
+flask>=2.2.5
 Flask-Cors
 Flask-Migrate
 Flask-RESTful
