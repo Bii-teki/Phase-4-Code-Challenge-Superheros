@@ -15,7 +15,7 @@ marshmallow-sqlalchemy = "*"
 flask-swagger-ui = "*"
 gunicorn = "*"
 pytest = "*"
-
+flask_restx="*"
 [dev-packages]
 
 [requires]
