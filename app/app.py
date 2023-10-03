@@ -4,7 +4,7 @@ from flask import Flask, make_response, jsonify, request, send_from_directory
 from flask_migrate import Migrate
 
 from flask_restful import Api, Resource
-from flask_restx import Api, Resource, reqparse, fields
+# from flask_restx import Api, Resource, reqparse, fields
 from flask_cors import CORS, cross_origin
 
 import random
@@ -26,13 +26,13 @@ db.init_app(app)
 
 api = Api(app)
 
-patch_model = api.model('PowerPatch', {
-    'name': fields.String(description='Name of the power'),
-    'description': fields.String(description='Description of the power')
-})
-post_model = api.model('PostHeroPower', {
-    'strength': fields.String(strength='Strength')
-})
+# patch_model = api.model('PowerPatch', {
+#     'name': fields.String(description='Name of the power'),
+#     'description': fields.String(description='Description of the power')
+# })
+# post_model = api.model('PostHeroPower', {
+#     'strength': fields.String(strength='Strength')
+# })
 
 class Index(Resource):
     @cross_origin()    
@@ -94,10 +94,10 @@ class PowerByIDResource(Resource):
         return make_response(jsonify(Power.query.filter_by(id=id).first().to_dict()), 200)  
     
     
-    @api.doc(description='Update a power by ID')
-    @api.expect(patch_model)
-    @api.response(200, 'Power updated successfully')
-    @api.response(404, 'Power not found')
+    # @api.doc(description='Update a power by ID')
+    # @api.expect(patch_model)
+    # @api.response(200, 'Power updated successfully')
+    # @api.response(404, 'Power not found')
     def patch(self, id):
         data = request.json
         record = Power.query.filter_by(id=id).first()
